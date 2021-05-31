@@ -10,3 +10,8 @@ export default function Details() {
         </View>
     )
 }
+
+/*
+navigation: 
+clicking back btn should navigate me back to Home screen
+*/
