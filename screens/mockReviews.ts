@@ -1,9 +1,11 @@
-export const mockReviews: { 
+export interface ReviewItem { 
     title: string, 
     rating: number, 
     body: string, 
     key: string 
-}[] = [
+};
+
+export const mockReviews: ReviewItem[] = [
     {
         title: 'Zelda, Breath of Fresh Air', 
         rating: 5, body: 'lorem ipsum', 

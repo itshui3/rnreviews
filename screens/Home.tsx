@@ -1,27 +1,44 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 import { globalStyles } from '../styles/global';
 
-import { mockReviews } from './mockReviews';
+import { mockReviews, ReviewItem } from './mockReviews';
 
 type Props = {
   navigation: any;
 };
 
+
 export default function Home({ navigation }: Props) {
 
     const [reviews, setReviews] = useState(mockReviews);
 
-    const navigateDetails = () => {
-      navigation.navigate('Details');
+    const navigateDetails = (item: ReviewItem) => {
+      navigation.navigate('Details', {
+        title: item.title,
+        rating: item.rating,
+        body: item.body,
+        key: item.key
+      });
     }
 
     return (
         <View style={globalStyles.container}>
-            <Text style={globalStyles.titleText}>Home Screen</Text>
-            <Button title='go to review dets' onPress={navigateDetails} />
+
+            <FlatList
+            data={reviews}
+            renderItem={({ item }) => (
+                <TouchableOpacity
+                key={item.key}
+                onPress={() => navigateDetails(item)}>
+                  <Text style={globalStyles.titleText}>{item.title}</Text>
+                </TouchableOpacity>
+              )
+            }
+            />
+
         </View>
     )
 }

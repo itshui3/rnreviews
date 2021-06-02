@@ -4,19 +4,19 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { globalStyles } from '../styles/global';
 
 interface Props {
-    navigation: any
+    navigation: any,
+    route: any
 }
 
-export default function Details({ navigation }: Props) {
+export default function Details({ navigation, route }: Props) {
 
-    const back = () => {
-        navigation.goBack();
-    }
+    const { title, body, rating } = route.params;
 
     return (
         <View style={globalStyles.container}>
-            <Text style={globalStyles.titleText}>Details Screen</Text>
-            <Button title='back to home screen' onPress={back} />
+            <Text style={globalStyles.titleText}>{ title }</Text>
+            <Text style={globalStyles.paragraph}>{ body }</Text>
+            <Text style={globalStyles.paragraph}>Rating: { rating }</Text>
         </View>
     )
 }
