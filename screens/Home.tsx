@@ -1,26 +1,32 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 import { globalStyles } from '../styles/global';
 
-const mockReviews: { 
-    title: string, 
-    rating: number, 
-    body: string, 
-    key: string 
-}[] = [
-    {title: 'Zelda, Breath of Fresh Air', rating: 5, body: 'lorem ipsum', key: '1' },
-    {title: 'Gotta Catch Them All(again)', rating: 4, body: 'lorem ipsum', key: '2' },
-    {title: 'Not So "Final" Fantasy', rating: 3, body: 'lorem ipsum', key: '3' },
-];
+import { mockReviews } from './mockReviews';
 
-export default function Home() {
+// type ProfileScreenNavigationProp = StackNavigationProp<
+//   RootStackParamList,
+//   'Profile'
+// >;
+
+type Props = {
+  navigation: any;
+};
+
+export default function Home({ navigation }: Props) {
 
     const [reviews, setReviews] = useState(mockReviews);
+
+    const navigateDetails = () => {
+      navigation.navigate('Details');
+    }
 
     return (
         <View style={globalStyles.container}>
             <Text style={globalStyles.titleText}>Home Screen</Text>
+            <Button title='go to review dets' onPress={navigateDetails} />
         </View>
     )
 }
