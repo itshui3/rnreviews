@@ -6,11 +6,6 @@ import { globalStyles } from '../styles/global';
 
 import { mockReviews } from './mockReviews';
 
-// type ProfileScreenNavigationProp = StackNavigationProp<
-//   RootStackParamList,
-//   'Profile'
-// >;
-
 type Props = {
   navigation: any;
 };
